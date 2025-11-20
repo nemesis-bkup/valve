@@ -190,13 +190,13 @@ HLHUD_UpdateTimers(float health, float armor, float clip, float ammo1, float amm
 		g_armorAlpha = 1.0;
 	}
 	if (clip != g_oldClip) {
-		g_clipAlpha = 1.0;
+		g_ammo1Alpha = 1.0;
 	}
 	if (ammo1 != g_oldAmmo1) {
 		g_ammo1Alpha = 1.0;
 	}
 	if (ammo2 != g_oldAmmo2) {
-		g_ammo2Alpha = 1.0;
+		g_ammo1Alpha = 1.0;
 	}
 
 	g_oldHealth = health;
@@ -211,9 +211,7 @@ HLHUD_ClampTimers()
 {
 	g_healthAlpha = bound(g_fg_alpha, g_healthAlpha - (clframetime * 0.5), 1.0);
 	g_armorAlpha = bound(g_fg_alpha, g_armorAlpha - (clframetime * 0.5), 1.0);
-	g_clipAlpha = bound(g_fg_alpha, g_clipAlpha - (clframetime * 0.5), 1.0);
 	g_ammo1Alpha = bound(g_fg_alpha, g_ammo1Alpha - (clframetime * 0.5), 1.0);
-	g_ammo2Alpha = bound(g_fg_alpha, g_ammo2Alpha - (clframetime * 0.5), 1.0);
 	g_ammoDisplayAlpha = bound(0.0, g_ammoDisplayAlpha - (clframetime * 5), 1.0);
 	g_damageAlpha = bound(0.0, g_damageAlpha - (clframetime * 1), 1.0);
 }
@@ -358,7 +356,7 @@ HLHUD_DrawHealth(vector pos, float healthValue)
 		HLHUD_DrawNums(healthValue, pos, g_healthAlpha, colorLerp);
 	}
 
-	HUD_DrawSeperator(pos + [25,0], g_fg_alphaScale, colorLerp * g_healthAlpha);
+	HUD_DrawSeperator(pos + [25,0], g_fg_alphaScale, colorLerp * g_armorAlpha);
 
 }
 
@@ -494,8 +492,8 @@ HLHUD_DrawObituaries(vector drawAtPos, bool rightAlign)
 void
 HLHUD_DrawAmmo1(vector pos, float ammoValue)
 {
-	HLHUD_DrawNums(ammoValue, pos, g_clipAlpha, g_fg_color);
-	HUD_DrawSeperator(pos + [30,0], g_fg_alphaScale, g_fg_color * g_clipAlpha);
+	HLHUD_DrawNums(ammoValue, pos, g_ammo1Alpha, g_fg_color);
+	HUD_DrawSeperator(pos + [30,0], g_fg_alphaScale, g_fg_color * g_ammo1Alpha);
 }
 
 void
@@ -507,7 +505,7 @@ HLHUD_DrawAmmo2(vector pos, float ammoValue)
 void
 HLHUD_DrawAmmo3(vector pos, float ammoValue)
 {
-	HLHUD_DrawNums(ammoValue, pos, g_ammo2Alpha, g_fg_color);
+	HLHUD_DrawNums(ammoValue, pos, g_ammo1Alpha, g_fg_color);
 }
 
 void
@@ -615,8 +613,8 @@ HUD_Draw(void)
 		atlasPic.Draw_RGBA(
 			g_spriteAmmo2Icon,
 			pos + [24,0],
-			g_fg_color,
-			g_fg_alphaScale,
+			g_fg_color * g_ammo1Alpha,
+			g_ammo1Alpha * g_fg_alphaScale,
 			true
 		);
 
@@ -628,7 +626,7 @@ HUD_Draw(void)
 	atlasPic.Draw_RGBA(
 		g_spriteAmmoIcon,
 		pos,
-		g_fg_color,
+		g_fg_color * g_ammo1Alpha,
 		g_fg_alphaScale,
 		true
 	);

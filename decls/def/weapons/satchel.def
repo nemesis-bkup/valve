@@ -14,6 +14,7 @@ entityDef weapon_satchel
 	"editor_maxs"		"16 16 16"
 	"editor_usage"		"Satchel"
 	"editor_rotatable"	"1"
+	"model_view2"		"models/v_satchel_radio.mdl"
 
 	"ammoIcon"		"weapon_satchel.ammo"
 	"crosshair"		""
@@ -85,7 +86,6 @@ entityDef fireInfo_satchel_secondary
 	"removeOnEmpty" 	"1"
 	"ammoRequired"		"1"
 	"model_player"		"models/p_satchel_radio.mdl"
-	"model_view"		"models/v_satchel_radio.mdl"
 }
 
 entityDef fireInfo_satchel_primary
@@ -95,5 +95,4 @@ entityDef fireInfo_satchel_primary
 	"removeOnEmpty" 	"0"
 	"ammoRequired"		"1"
 	"model_player"		"models/p_satchel_radio.mdl"
-	"model_view"		"models/v_satchel_radio.mdl"
 }

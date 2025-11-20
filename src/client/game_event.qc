@@ -27,6 +27,9 @@ ClientGame_EventParse(float fHeader)
 	case EV_VIEWMODEL:
 		View_PlayAnimation(readbyte());
 		break;
+	case EV_CHAT_VOX:
+		Vox_Parse();
+		break;
 	default:
 		return (0);
 	}

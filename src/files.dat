@@ -1,4 +1,4 @@
-1742
+1743
 1 authentic.cfg
 1 cfg/skill_manifest.cfg
 1 cfg/skill_valve.cfg
@@ -262,6 +262,7 @@
 1 decls/sound/weapons_valve.sndshd
 1 decls/typeinfo/activities.decl
 1 decls/typeinfo/falldamage.decl
+1 decls/typeinfo/func_breakable.decl
 1 decls/typeinfo/hlmat.decl
 1 decls/typeinfo/lava.decl
 1 decls/typeinfo/slime.decl

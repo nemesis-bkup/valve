@@ -1,6 +1,7 @@
 QCC=fteqcc
 
 all:
+	cd addons && $(MAKE)
 	cd client && $(MAKE)
 	cd hud && $(MAKE)
 	cd server && $(MAKE)
