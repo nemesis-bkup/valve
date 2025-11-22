@@ -23,7 +23,7 @@ entityDef player
 
 	"act_draw"			"16,14"
 	"act_aim"			"16,14"
-	"act_attack"		"17,15"
+	"act_attack"			"17,15"
 
 	"act_draw_crowbar"				"25"
 	"act_aim_crowbar"				"25"

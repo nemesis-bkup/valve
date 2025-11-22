@@ -15,72 +15,6 @@
 */
 
 #define HLHUD_SPRITES 61i
-int g_spriteSheets[HLHUD_SPRITES];
-
-typedef enum
-{
-S_AUTOAIM_C,
-S_BUCKET0,
-S_BUCKET1,
-S_BUCKET2,
-S_BUCKET3,
-S_BUCKET4,
-S_BUCKET5,
-S_CROSS,
-S_D_357,
-S_D_9MMAR,
-S_D_9MMHANDGUN,
-S_D_BOLT,
-S_D_CROSSBOW,
-S_D_CROWBAR,
-S_D_EGON,
-S_D_GAUSS,
-S_D_GRENADE,
-S_D_HORNET,
-S_D_RPG_ROCKET,
-S_D_SATCHEL,
-S_D_SHOTGUN,
-S_D_SKULL,
-S_D_SNARK,
-S_D_TRACKTRAIN,
-S_D_TRIPMINE,
-S_DIVIDER,
-S_DMG_BIO,
-S_DMG_CHEM,
-S_DMG_COLD,
-S_DMG_DROWN,
-S_DMG_GAS,
-S_DMG_HEAT,
-S_DMG_POISON,
-S_DMG_RAD,
-S_DMG_SHOCK,
-S_FLASH_BEAM,
-S_FLASH_EMPTY,
-S_FLASH_FULL,
-S_ITEM_BATTERY,
-S_ITEM_HEALTHKIT,
-S_ITEM_LONGJUMP,
-S_NUMBER_0,
-S_NUMBER_1,
-S_NUMBER_2,
-S_NUMBER_3,
-S_NUMBER_4,
-S_NUMBER_5,
-S_NUMBER_6,
-S_NUMBER_7,
-S_NUMBER_8,
-S_NUMBER_9,
-S_SELECTION,
-S_SUIT_EMPTY,
-S_SUIT_FULL,
-S_TITLE_HALF,
-S_TITLE_LIFE,
-S_TRAIN_BACK,
-S_TRAIN_FORWARD1,
-S_TRAIN_FORWARD2,
-S_TRAIN_FORWARD3,
-S_TRAIN_STOP
-} hlSprites_t;
 
 const string g_hlSpriteNames[HLHUD_SPRITES] =
 {
@@ -367,7 +301,7 @@ void
 HLHUD_DrawNumber(int iNumber, vector vecPos, float fAlpha, vector vColor)
 {
 	atlasPic.Draw_RGBA(
-		atlasPic.Load(g_hlSpriteNames[S_NUMBER_0 + iNumber]),
+		atlasPic.Load(sprintf("number_%i", iNumber)),
 		vecPos,
 		vColor * fAlpha,
 		1.0,
