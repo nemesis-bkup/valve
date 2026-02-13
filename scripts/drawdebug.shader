@@ -20,3 +20,12 @@ aaatrigger
 {
 	surfaceParm nodraw
 }
+
+// fluff
+levelShotDetail
+{
+	{
+		map textures/detail/alien.tga
+		blendFunc filter
+	}
+}

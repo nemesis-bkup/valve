@@ -27,15 +27,15 @@ typeInfo objects
 // "material" key
 typeInfo surfaces
 {
-	"0" "gs_material_glass"
-	"1" "gs_material_wood"
-	"2" "gs_material_metal"
-	"3" "gs_material_flesh"
-	"4" "gs_material_cinderblock"
-	"5" "gs_material_tile"
-	"6" "gs_material_computer"
-	"7" "gs_material_unbreakableglass"
-	"8" "gs_material_rocks"
+	"0" "glass"
+	"1" "wood"
+	"2" "metal"
+	"3" "flesh"
+	"4" "cinderblock"
+	"5" "tile"
+	"6" "computer"
+	"7" "unbreakableglass"
+	"8" "rocks"
 }
 
 // "propdata" key

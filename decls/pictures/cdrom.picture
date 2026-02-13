@@ -1,0 +1,8 @@
+picture cdrom
+{
+	"name"			"Half-Life CD-ROM"
+	"info"			"1998"
+	"picture"		"http://archive.org/download/HalfLifeUSA/CD.jpg"
+	"preview"		"http://archive.org/download/HalfLifeUSA/CD.jpg"
+	"resolution"	"750 750"
+}

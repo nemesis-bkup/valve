@@ -49,13 +49,13 @@ public:
 #endif
 
 private:
-	PREDICTED_INT(m_counterValue)
-	PREDICTED_STRING(m_strIcon)
-	PREDICTED_STRING(m_strText)
-	PREDICTED_BOOL(m_bEnabled)
-	PREDICTED_BOOL(m_bAdditive)
-	PREDICTED_VECTOR(m_vecPosXY)
-	PREDICTED_VECTOR_N(colormod)
+	NETWORKED_INT(m_counterValue)
+	NETWORKED_STRING(m_strIcon)
+	NETWORKED_STRING(m_strText)
+	NETWORKED_BOOL(m_bEnabled)
+	NETWORKED_BOOL(m_bAdditive)
+	NETWORKED_VECTOR(m_vecPosXY)
+	NETWORKED_VECTOR_N(colormod)
 
 #ifdef CLIENT
 	int m_iconHandle;

@@ -5,6 +5,7 @@
 #define CSQC
 #define CLIENT
 #define VALVE
+#define GAME_DIR "valve"
 
 #includelist
 ../../../src/common/include.src

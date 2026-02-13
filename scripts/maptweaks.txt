@@ -1,12 +1,12 @@
 mutliplayer
 {
 	when-cvar g_gametype equals deathmatch
-	replace weapon_357 weapon_357_mp 
-	replace weapon_python weapon_357_mp 
-	replace weapon_9mmAR weapon_9mmAR_mp 
-	replace weapon_mp5 weapon_9mmAR_mp 
-	replace weapon_crossbow weapon_crossbow_mp 
-	replace weapon_shotgun weapon_shotgun_mp 
+	replace weapon_357 weapon_357_mp
+	replace weapon_python weapon_357_mp
+	replace weapon_9mmAR weapon_9mmAR_mp
+	replace weapon_mp5 weapon_9mmAR_mp
+	replace weapon_crossbow weapon_crossbow_mp
+	replace weapon_shotgun weapon_shotgun_mp
 }
 
 deprecated

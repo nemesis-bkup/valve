@@ -1,0 +1,137 @@
+#define CG_RADTHERAPY_HEALTH        128
+#define CG_RADTHERAPY_ARMOR         129
+#define CG_RADTHERAPY_FLASHLIGHT    130
+#define CG_RADTHERAPY_AMMO1         131
+#define CG_RADTHERAPY_AMMO2         132
+#define CG_RADTHERAPY_AMMO3         133
+#define CG_RADTHERAPY_AMMOICON      134
+#define CG_RADTHERAPY_DAMAGENOTIFY  135
+#define CG_RADTHERAPY_ITEMNOTIFY    136
+#define CG_RADTHERAPY_AMMONOTIFY    137
+#define CG_RADTHERAPY_KILLMSG       138
+
+{
+
+	assetglobaldef
+	{
+		font fonts/font16 16
+	}
+
+	menuDef
+	{
+		name "main"
+		rect 0 0 640 480
+		visible 1
+
+		itemDef
+		{
+			name Health
+			rect 88 438 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_HEALTH
+		}
+
+		itemDef
+		{
+			name Armor
+			rect 198 438 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_ARMOR
+		}
+
+		itemDef
+		{
+			name Flashlight
+			rect 588 16 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_FLASHLIGHT
+		}
+
+		itemDef
+		{
+			name AmmoArea
+			rect 568 406 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_AMMO4
+		}
+
+		itemDef
+		{
+			name AmmoArea
+			rect 592 438 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_AMMOICON
+		}
+
+		itemDef
+		{
+			name AmmoArea
+			rect 568 438 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_AMMO2
+		}
+
+		itemDef
+		{
+			name AmmoArea
+			rect 488 438 0 0
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_AMMO1
+		}
+
+		itemDef
+		{
+			name DamageNotify
+			rect 296 432 32 32
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_DAMAGENOTIFY
+		}
+
+		itemDef
+		{
+			name ItemNotify
+			rect 296 432 32 32
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_ITEMNOTIFY
+		}
+
+		itemDef
+		{
+			name AmmoNotify
+			rect 296 432 32 32
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_AMMONOTIFY
+		}
+
+		itemDef
+		{
+			name KillMsgs
+			rect 624 48 320 240
+			decoration
+			visible 1
+			type 8
+			ownerdraw CG_RADTHERAPY_KILLMSG
+		}
+	}
+}
+
