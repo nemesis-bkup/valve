@@ -1,0 +1,9 @@
+typeInfo sentry_combatFace
+{
+	"task_1"				"PlayActivity deploy"
+	"task_2"				"PlayActivity idleAngry"
+	"task_3"				"TurnToEnemy"
+	"fail_onDeadEnemy"		"1"
+	"fail_onDamage"			"0"
+	"CanRangedAttack1"		"ChangeMindset combat"
+}

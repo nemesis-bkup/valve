@@ -33,6 +33,14 @@ entityDef monster_sentry
 	"use_nav"		"0"
 	"bleed"			"0"
 	"fireFromHead"	"1"
+
+	"mindset_idle" "sentry_idle"
+	"mindset_idleAlert" "sentry_idleAlert"
+	"mindset_hunt"	"huntPlayer"
+	"mindset_search"	"searchNearestPlayer"
+	"mindset_combat" "sentry_rangedAttack"
+	"mindset_retire" "sentry_retire"
+	"mindset_deploy" "sentry_deploy"
 }
 
 entityDef ranged_sentry_shot

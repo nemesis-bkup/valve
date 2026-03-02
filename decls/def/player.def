@@ -127,3 +127,15 @@ entityDef player_mp
 	"weapon"			"weapon_crowbar,weapon_9mmhandgun"
 	"current_weapon"	"1"
 }
+
+entityDef player_home_qw
+{
+	"inherit" 			"player_mp"
+	"weapon"			"weapon_unarmed"
+}
+
+entityDef player_home_hl
+{
+	"inherit" 			"player_mp"
+	"weapon"			"weapon_unarmed"
+}

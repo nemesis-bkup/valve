@@ -1,0 +1,7 @@
+typeInfo sentry_victoryDance
+{
+	"task_3"			"Wait 1.5"
+	"task_6"			"PlayNamedSequence retire"
+	"fail_onNewEnemy"			"1"
+	"fail_onDamage"			"1"
+}

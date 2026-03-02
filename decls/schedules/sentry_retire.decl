@@ -1,0 +1,6 @@
+typeInfo sentry_retire
+{
+	"task_1"			"PlayNamedSequence retire"
+	"task_2"            "ForgetEnemy"
+	"task_3"			"ChangeMindset idle"
+}

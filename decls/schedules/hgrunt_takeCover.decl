@@ -12,4 +12,5 @@ typeInfo hgrunt_takeCover
 	"task_9"		"ChangeMindset combat"
 	"fail_NewEnemy"	"1"
 	"fail_OccludedEnemy"	"1"
+	"CanRangedAttack1"			"AlertSquadWithMindset combat"
 }

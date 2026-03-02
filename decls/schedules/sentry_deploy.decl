@@ -1,0 +1,6 @@
+typeInfo sentry_deploy
+{
+	"task_1"			"PlayNamedSequence deploy"
+	"task_2"			"Wait 3"
+	"task_3"			"ChangeMindset idleAlert"
+}

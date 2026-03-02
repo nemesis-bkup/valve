@@ -1,7 +1,7 @@
 class
-HLSuit:ncItem
+hlSuit:ncItem
 {
-	void HLSuit(void);
+	void hlSuit(void);
 
 	virtual void OnUse(entity usingEntity);
 
@@ -16,7 +16,7 @@ HLSuit:ncItem
 
 
 void
-HLSuit::HLSuit(void)
+hlSuit::hlSuit(void)
 {
 	m_suitType = 0i;
 	m_sndFlashOn = "";
@@ -26,7 +26,7 @@ HLSuit::HLSuit(void)
 }
 
 void
-HLSuit::Spawned(void)
+hlSuit::Spawned(void)
 {
 	super::Spawned();
 
@@ -38,7 +38,7 @@ HLSuit::Spawned(void)
 }
 
 void
-HLSuit::OnUse(entity userEntity)
+hlSuit::OnUse(entity userEntity)
 {
 	switch (m_suitType) {
 	case 0i:

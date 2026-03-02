@@ -1,0 +1,8 @@
+typeInfo sentry_idleAlert
+{
+	"task_1"			"PlayNamedSequence spin"
+	"task_2"			"Wait 10"
+	"task_3"			"ChangeMindset retire"
+	"NewEnemy"			"PerformSchedule sentry_rangedAttack"
+	"CanRangedAttack1"	"PerformSchedule sentry_rangedAttack"
+}

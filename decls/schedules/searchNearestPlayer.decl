@@ -5,5 +5,5 @@ typeInfo searchNearestPlayer
 	"task_3"	"TargetNearestPlayer"
 	"task_4"	"RunToTargetWithinRadius 256"
 	"task_5"	"WaitForMovement"
-	"CanRangedAttack1"	"ChangeMindset rangedCombat"
+	"CanRangedAttack1"	"ChangeMindset combat"
 }

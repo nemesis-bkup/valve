@@ -1,17 +1,10 @@
-#define CG_RADTHERAPY_HEALTH        128
-#define CG_RADTHERAPY_ARMOR         129
-#define CG_RADTHERAPY_FLASHLIGHT    130
-#define CG_RADTHERAPY_AMMO1         131
-#define CG_RADTHERAPY_AMMO2         132
-#define CG_RADTHERAPY_AMMO3         133
-#define CG_RADTHERAPY_AMMOICON      134
-#define CG_RADTHERAPY_DAMAGENOTIFY  135
-#define CG_RADTHERAPY_ITEMNOTIFY    136
-#define CG_RADTHERAPY_AMMONOTIFY    137
-#define CG_RADTHERAPY_KILLMSG       138
+// Rad-Therapy HUD Layout
+// Any CG_RADTHERAPY ownerdraw types
+// are defined inside the hud.dat!
+
+#include "ui/menudef.h"
 
 {
-
 	assetglobaldef
 	{
 		font fonts/font16 16
@@ -25,113 +18,137 @@
 
 		itemDef
 		{
-			name Health
-			rect 88 438 0 0
-			decoration
-			visible 1
+			name HIcon
+			rect 16 434 0 0
+			ownerdraw CG_RADTHERAPY_HEALTH_ICON
 			type 8
-			ownerdraw CG_RADTHERAPY_HEALTH
+			decoration
 		}
 
 		itemDef
 		{
-			name Armor
-			rect 198 438 0 0
-			decoration
-			visible 1
+			name HValue
+			rect 88 438 0 0
+			ownerdraw CG_RADTHERAPY_HEALTH_VALUE
 			type 8
-			ownerdraw CG_RADTHERAPY_ARMOR
+			decoration
+		}
+
+		itemDef
+		{
+			name HSep
+			rect 113 438 0 0
+			ownerdraw CG_RADTHERAPY_SEPARATOR_HEALTH
+			type 8
+			decoration
+		}
+
+		itemDef
+		{
+			name AIcon
+			rect 118 429 0 0
+			ownerdraw CG_RADTHERAPY_ARMOR_ICON
+			type 8
+			decoration
+		}
+
+		itemDef
+		{
+			name AValue
+			rect 198 438 0 0
+			ownerdraw CG_RADTHERAPY_ARMOR_VALUE
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name Flashlight
 			rect 588 16 0 0
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_FLASHLIGHT
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name AmmoArea
 			rect 568 406 0 0
-			decoration
-			visible 1
+			ownerdraw CG_RADTHERAPY_AMMO3
 			type 8
-			ownerdraw CG_RADTHERAPY_AMMO4
+			decoration
 		}
 
 		itemDef
 		{
 			name AmmoArea
 			rect 592 438 0 0
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_AMMOICON
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name AmmoArea
 			rect 568 438 0 0
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_AMMO2
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name AmmoArea
 			rect 488 438 0 0
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_AMMO1
+			type 8
+			decoration
+		}
+
+		itemDef
+		{
+			name ASeparator
+			rect 518 438 0 0
+			ownerdraw CG_RADTHERAPY_SEPARATOR_AMMO
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name DamageNotify
 			rect 296 432 32 32
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_DAMAGENOTIFY
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name ItemNotify
 			rect 296 432 32 32
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_ITEMNOTIFY
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name AmmoNotify
 			rect 296 432 32 32
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_AMMONOTIFY
+			type 8
+			decoration
 		}
 
 		itemDef
 		{
 			name KillMsgs
 			rect 624 48 320 240
-			decoration
-			visible 1
-			type 8
 			ownerdraw CG_RADTHERAPY_KILLMSG
+			type 8
+			decoration
 		}
 	}
 }
-

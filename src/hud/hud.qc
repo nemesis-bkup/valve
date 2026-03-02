@@ -1,5 +1,20 @@
+/*
+ * Copyright (c) 2025-2026 Vera Visions LLC.
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF MIND, USE, DATA OR PROFITS, WHETHER
+ * IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING
+ * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+*/
 
-
+#include "../../ui/menudef.h"
 
 void
 HLHUD_AmmoNotify_Draw(__inout vector pos)
@@ -321,15 +336,35 @@ HLHUD_DrawHealth(vector pos, float healthValue)
 		colorLerp[0] = lerp(autocvar_hlhud_healthColor1[0], autocvar_hlhud_healthColor2[0], percentageAmount);
 		colorLerp[1] = lerp(autocvar_hlhud_healthColor1[1], autocvar_hlhud_healthColor2[1], percentageAmount);
 		colorLerp[2] = lerp(autocvar_hlhud_healthColor1[2], autocvar_hlhud_healthColor2[2], percentageAmount);
+		HLHUD_DrawNums(healthValue, pos, g_healthAlpha, colorLerp);
+	} else {
+		float percentageAmount = (healthValue * (1/25)); /* 0 - 25 */
+		colorLerp[0] = lerp(autocvar_hlhud_lowHealthColor1[0], autocvar_hlhud_lowHealthColor2[0], percentageAmount);
+		colorLerp[1] = lerp(autocvar_hlhud_lowHealthColor1[1], autocvar_hlhud_lowHealthColor2[1], percentageAmount);
+		colorLerp[2] = lerp(autocvar_hlhud_lowHealthColor1[2], autocvar_hlhud_lowHealthColor2[2], percentageAmount);
+		HLHUD_DrawNums(healthValue, pos, g_healthAlpha, colorLerp);
+	}
+
+}
+
+void
+HLHUD_DrawHealthIcon(vector pos, float healthValue)
+{
+	vector colorLerp;
+
+	if (healthValue > 25) {
+		float percentageAmount = ((healthValue - 25) * (1/75)); /* low health starts at 25 */
+		colorLerp[0] = lerp(autocvar_hlhud_healthColor1[0], autocvar_hlhud_healthColor2[0], percentageAmount);
+		colorLerp[1] = lerp(autocvar_hlhud_healthColor1[1], autocvar_hlhud_healthColor2[1], percentageAmount);
+		colorLerp[2] = lerp(autocvar_hlhud_healthColor1[2], autocvar_hlhud_healthColor2[2], percentageAmount);
 
 		atlasPic.Draw_RGBA(
 			g_spriteSheets[S_CROSS],
-			pos + [-72,-4],
+			pos,
 			colorLerp * g_healthAlpha,
 			g_fg_alphaScale,
 			true
 		);
-		HLHUD_DrawNums(healthValue, pos, g_healthAlpha, colorLerp);
 	} else {
 		float percentageAmount = (healthValue * (1/25)); /* 0 - 25 */
 		colorLerp[0] = lerp(autocvar_hlhud_lowHealthColor1[0], autocvar_hlhud_lowHealthColor2[0], percentageAmount);
@@ -338,16 +373,12 @@ HLHUD_DrawHealth(vector pos, float healthValue)
 
 		atlasPic.Draw_RGBA(
 			g_spriteSheets[S_CROSS],
-			pos + [-72,-4],
+			pos,
 			colorLerp,
 			g_fg_alphaScale,
 			true
 		);
-		HLHUD_DrawNums(healthValue, pos, g_healthAlpha, colorLerp);
 	}
-
-	HUD_DrawSeperator(pos + [25,0], g_fg_alphaScale, colorLerp * g_armorAlpha);
-
 }
 
 void
@@ -358,10 +389,21 @@ HLHUD_DrawArmor(vector pos, float armorValue)
 	colorLerp[0] = lerp(autocvar_hlhud_armorColor1[0], autocvar_hlhud_armorColor2[0], percentageAmount);
 	colorLerp[1] = lerp(autocvar_hlhud_armorColor1[1], autocvar_hlhud_armorColor2[1], percentageAmount);
 	colorLerp[2] = lerp(autocvar_hlhud_armorColor1[2], autocvar_hlhud_armorColor2[2], percentageAmount);
+	HLHUD_DrawNums(armorValue, pos, g_fg_alphaScale, colorLerp * g_armorAlpha);
+}
+
+void
+HLHUD_DrawArmorIcon(vector pos, float armorValue)
+{
+	vector colorLerp;
+	float percentageAmount = (armorValue * (1/100)); /* low health starts at 25 */
+	colorLerp[0] = lerp(autocvar_hlhud_armorColor1[0], autocvar_hlhud_armorColor2[0], percentageAmount);
+	colorLerp[1] = lerp(autocvar_hlhud_armorColor1[1], autocvar_hlhud_armorColor2[1], percentageAmount);
+	colorLerp[2] = lerp(autocvar_hlhud_armorColor1[2], autocvar_hlhud_armorColor2[2], percentageAmount);
 
 	atlasPic.Draw_RGBA(
 		g_spriteSheets[S_SUIT_EMPTY],
-		pos + [-80,-9],
+		pos,
 		colorLerp * g_armorAlpha,
 		g_fg_alphaScale,
 		true
@@ -372,15 +414,13 @@ HLHUD_DrawArmor(vector pos, float armorValue)
 
 		atlasPic.DrawBottom_RGBA(
 			g_spriteSheets[S_SUIT_FULL],
-			pos + [-80,-9],
+			pos,
 			perc,
 			colorLerp * g_armorAlpha,
 			g_fg_alphaScale,
 			true
 		);
 	}
-
-	HLHUD_DrawNums(armorValue, pos, g_fg_alphaScale, colorLerp * g_armorAlpha);
 }
 
 void
@@ -483,7 +523,6 @@ void
 HLHUD_DrawAmmo1(vector pos, float ammoValue)
 {
 	HLHUD_DrawNums(ammoValue, pos, g_ammo1Alpha, g_fg_color);
-	HUD_DrawSeperator(pos + [30,0], g_fg_alphaScale, g_fg_color * g_ammo1Alpha);
 }
 
 void
@@ -498,31 +537,24 @@ HLHUD_DrawAmmo3(vector pos, float ammoValue)
 	HLHUD_DrawNums(ammoValue, pos, g_ammo1Alpha, g_fg_color);
 }
 
-
-#define CG_RADTHERAPY_HEALTH        128
-#define CG_RADTHERAPY_ARMOR         129
-#define CG_RADTHERAPY_FLASHLIGHT    130
-#define CG_RADTHERAPY_AMMO1         131
-#define CG_RADTHERAPY_AMMO2         132
-#define CG_RADTHERAPY_AMMO3         133
-#define CG_RADTHERAPY_AMMOICON      134
-#define CG_RADTHERAPY_DAMAGENOTIFY  135
-#define CG_RADTHERAPY_ITEMNOTIFY    136
-#define CG_RADTHERAPY_AMMONOTIFY    137
-#define CG_RADTHERAPY_KILLMSG       138
-
 bool
 HUD_OwnerDrawItemRect(vector pos, vector size, int ownerDraw, int type)
 {
 	switch (ownerDraw) {
-	case CG_RADTHERAPY_HEALTH:
+	case CG_RADTHERAPY_HEALTH_VALUE:
 		HLHUD_DrawHealth(pos, player.GetHealth());
 		break;
-	case CG_RADTHERAPY_ARMOR:
+	case CG_RADTHERAPY_HEALTH_ICON:
+		HLHUD_DrawHealthIcon(pos, player.GetHealth());
+		break;
+	case CG_RADTHERAPY_ARMOR_VALUE:
 		HLHUD_DrawArmor(pos, player.GetArmor());
 		break;
+	case CG_RADTHERAPY_ARMOR_ICON:
+		HLHUD_DrawArmorIcon(pos, player.GetArmor());
+		break;
 	case CG_RADTHERAPY_FLASHLIGHT:
-		HLHUD_DrawFlashlight(pos, player.GetStamina());
+		HLHUD_DrawFlashlight(pos, 1.0 - player.GetStamina());
 		break;
 	case CG_RADTHERAPY_AMMO3:
     	if (weapon.AmmoRequired() == false) {
@@ -542,7 +574,7 @@ HUD_OwnerDrawItemRect(vector pos, vector size, int ownerDraw, int type)
             HLHUD_DrawAmmo3(pos, weapon.GetAmmo2());
         }
 
-            break;
+        break;
 	case CG_RADTHERAPY_AMMOICON:
     	if (weapon.AmmoRequired() == false) {
             break;
@@ -556,7 +588,7 @@ HUD_OwnerDrawItemRect(vector pos, vector size, int ownerDraw, int type)
             true
         );
 
-            break;
+        break;
 	case CG_RADTHERAPY_AMMO1:
 
     	if (weapon.AmmoRequired() == false) {
@@ -567,7 +599,7 @@ HUD_OwnerDrawItemRect(vector pos, vector size, int ownerDraw, int type)
             HLHUD_DrawAmmo1(pos, weapon.GetClip());
         }
 
-            break;
+        break;
 	case CG_RADTHERAPY_AMMO2:
     	if (weapon.AmmoRequired() == false) {
             break;
@@ -577,16 +609,43 @@ HUD_OwnerDrawItemRect(vector pos, vector size, int ownerDraw, int type)
         break;
 	case CG_RADTHERAPY_DAMAGENOTIFY:
         HLHUD_DamageNotifyDraw(pos, size);
-            break;
+        break;
 	case CG_RADTHERAPY_ITEMNOTIFY:
 		HLHUD_ItemNotify_Draw(pos);
-            break;
+        break;
 	case CG_RADTHERAPY_AMMONOTIFY:
 		HLHUD_AmmoNotify_Draw(pos);
-            break;
+        break;
 	case CG_RADTHERAPY_KILLMSG:
         HLHUD_DrawObituaries(pos, true);
+        break;
+    case CG_RADTHERAPY_SEPARATOR_HEALTH:
+    	vector colorLerp;
+        float healthValue =  player.GetHealth();
+
+        if (healthValue > 25) {
+            float percentageAmount = ((healthValue - 25) * (1/75)); /* low health starts at 25 */
+            colorLerp[0] = lerp(autocvar_hlhud_healthColor1[0], autocvar_hlhud_healthColor2[0], percentageAmount);
+            colorLerp[1] = lerp(autocvar_hlhud_healthColor1[1], autocvar_hlhud_healthColor2[1], percentageAmount);
+            colorLerp[2] = lerp(autocvar_hlhud_healthColor1[2], autocvar_hlhud_healthColor2[2], percentageAmount);
+        } else {
+            float percentageAmount = (healthValue * (1/25)); /* 0 - 25 */
+            colorLerp[0] = lerp(autocvar_hlhud_lowHealthColor1[0], autocvar_hlhud_lowHealthColor2[0], percentageAmount);
+            colorLerp[1] = lerp(autocvar_hlhud_lowHealthColor1[1], autocvar_hlhud_lowHealthColor2[1], percentageAmount);
+            colorLerp[2] = lerp(autocvar_hlhud_lowHealthColor1[2], autocvar_hlhud_lowHealthColor2[2], percentageAmount);
+        }
+
+        HUD_DrawSeperator(pos, g_fg_alphaScale, colorLerp * g_armorAlpha);
+        break;
+    case CG_RADTHERAPY_SEPARATOR_AMMO:
+    	if (weapon.AmmoRequired() == false) {
             break;
+        }
+
+        if (weapon.GetClipSize() > 0) {
+            HUD_DrawSeperator(pos, g_fg_alphaScale, g_fg_color * g_ammo1Alpha);
+        }
+        break;
     default:
 		return (false);
 	}
@@ -613,13 +672,6 @@ HUD_Draw(void)
 
 	HLHUD_UpdateTimers(healthValue, armorValue, clipValue, ammoValue, ammoValue2);
 	HLHUD_DamageNotifyDraw(hud_mins, hud_size);
-
-	if (1) {
-		pos = g_hudMins + [g_hudRes[0] - 192, g_hudRes[1] - 128];
-		pos[1] += 48;
-		HLHUD_ItemNotify_Draw(pos);
-		HLHUD_AmmoNotify_Draw(pos);
-	}
 
 	if (g_damageAlpha > 0.0f) {
 		vector center;
@@ -670,6 +722,7 @@ HUD_Draw(void)
 		g_damageAlpha -= clframetime;
 	}
 
+	/* draws the ui/hud.txt */
 	draw.ScriptedView(g_hudMins, g_hudRes);
 
 	weaponSelectionHUD.Draw();

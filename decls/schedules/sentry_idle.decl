@@ -1,0 +1,9 @@
+typeInfo sentry_idle
+{
+	"task_1"			"PlayNamedSequence idle_off"
+	"task_2"			"Wait 2"
+	"task_3"			"WaitPVS"
+	"FoundEnemy"		"ChangeMindset deploy"
+	"Damage"			"ChangeMindset deploy"
+	"OccludedEnemy"		"ChangeMindset retire"
+}
