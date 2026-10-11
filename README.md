@@ -1,4 +1,4 @@
-# ![](img/rt.png) Rad-Therapy
+# <img width="64" alt="Rad-Therapy logo" src="img/Rad-Therapy.png" /> Rad-Therapy
 
 This is a clone of the 1998 game known as 'HL1', porting it to Quake(World) because it's the nearest neighbor.
 Powered by Nuclide and the [FTE Engine](https://www.fteqw.org/).
